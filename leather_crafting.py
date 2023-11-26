@@ -4,13 +4,13 @@ import os
 
 os.system('cls' if os.name == 'nt' else 'clear') # clear the terminal, used for debugging purposes
 
-url = "https://wiki.guildwars2.com/wiki/Leatherworker/Novice_recipes"
-url1 = "https://wiki.guildwars2.com/wiki/Leatherworker/Initiate_recipes"
-url2 = "https://wiki.guildwars2.com/wiki/Leatherworker/Apprentice_recipes"
-url3 = "https://wiki.guildwars2.com/wiki/Leatherworker/Journeyman_recipes"
-url4 = "https://wiki.guildwars2.com/wiki/Leatherworker/Adept_recipes"
-url5 = "https://wiki.guildwars2.com/wiki/Leatherworker/Master_recipes"
-url6 = "https://wiki.guildwars2.com/wiki/Leatherworker/Grandmaster_recipes"
+url : str = "https://wiki.guildwars2.com/wiki/Leatherworker/Novice_recipes"
+url1 : str = "https://wiki.guildwars2.com/wiki/Leatherworker/Initiate_recipes"
+url2 : str = "https://wiki.guildwars2.com/wiki/Leatherworker/Apprentice_recipes"
+url3 : str = "https://wiki.guildwars2.com/wiki/Leatherworker/Journeyman_recipes"
+url4 : str = "https://wiki.guildwars2.com/wiki/Leatherworker/Adept_recipes"
+url5 : str = "https://wiki.guildwars2.com/wiki/Leatherworker/Master_recipes"
+url6 : str = "https://wiki.guildwars2.com/wiki/Leatherworker/Grandmaster_recipes"
 
 # Novice recipes
 insignia_novice = pd.read_html(url, header=0)[2] # adding a dataframe for the insignia recipes
