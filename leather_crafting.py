@@ -64,6 +64,8 @@ leather_working = pd.concat([novice_dataframe, initiate_dataframe, apprentice_da
 # data cleaning
 leather_working.rename(columns={'Rating': 'Level'}, inplace=True) # changing Rating column name
 leather_working.drop(['Discipline(s)'], axis=1, inplace=True) # dropping disciplines column
+leather_working = leather_working[['Rarity', 'Level', 'Item', 'Ingredients']] # move the rarity column to the front
+leather_working.sort_values(by=['Level'], inplace=True) # sorting the dataframe by the level column
 
 with sqlite3.connect('gw2.db') as conn:
     leather_working.to_sql('leather_crafting', conn, if_exists='replace', index=False)
