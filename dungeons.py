@@ -1,6 +1,5 @@
 import sqlite3
 import pandas as pd
-import numpy as np
 
 # getting the data from the wikipedia page
 
