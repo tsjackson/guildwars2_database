@@ -2,8 +2,7 @@ import sqlite3
 import pandas as pd
 import os
 
-# clear the terminal
-os.system('cls' if os.name == 'nt' else 'clear')
+os.system('cls' if os.name == 'nt' else 'clear') # clear the terminal, used for debugging purposes
 
 url = "https://wiki.guildwars2.com/wiki/Leatherworker/Novice_recipes"
 url1 = "https://wiki.guildwars2.com/wiki/Leatherworker/Initiate_recipes"
