@@ -19,8 +19,13 @@ refinement_novice = pd.read_html(url, header=0)[0] # adding another dataframe fo
 
 # Apprentice recipes
 insignia_apprentice = pd.read_html(url2, header=0)[2] # adding a dataframe for the insignia recipes
-rune_apprentice = pd.read_html(url2, header=0)[2] # adding another dataframe for the rune recipes
+rune_apprentice = pd.read_html(url2, header=0)[4] # adding another dataframe for the rune recipes
 refinement_apprentice = pd.read_html(url2, header=0)[0] # adding another dataframe for the refinement recipes
+
+# # Journeyman recipes
+# insignia_journeyman = pd.read_html(url3, header=0)[2] # adding a dataframe for the insignia recipes
+# rune_journeyman = pd.read_html(url3, header=0)[5] # adding another dataframe for the rune recipes
+# refinement_journeyman = pd.read_html(url3, header=0)[0] # adding another dataframe for the refinement recipes
 
 print(insignia_apprentice)
 print(rune_apprentice)
@@ -35,6 +40,6 @@ leather_working.rename(columns={'Rating': 'Level'}, inplace=True)
 # dropping disciplines column
 leather_working.drop(['Discipline(s)'], axis=1, inplace=True)
 
-with sqlite3.connect('gw2.db') as conn:
-    leather_working.to_sql('leather_crafting', conn, if_exists='replace', index=False)
-    conn.commit()
+# with sqlite3.connect('gw2.db') as conn:
+#     leather_working.to_sql('leather_crafting', conn, if_exists='replace', index=False)
+#     conn.commit()
