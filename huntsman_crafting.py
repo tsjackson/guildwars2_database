@@ -98,6 +98,11 @@ huntsman_dataframe['Attributes'] = huntsman_dataframe['Attributes'].fillna('N.A.
 huntsman_dataframe.drop(columns=['Discipline(s)'], inplace=True) # dropping the Output column
 huntsman_dataframe['Crafting Level'] = huntsman_dataframe['Crafting Level'].fillna(huntsman_dataframe['Rating']) # replacing null values in the Crafting Level column with the value in the name Rating
 huntsman_dataframe.drop(columns=['Rating'], inplace=True) # dropping the Rating column
+huntsman_dataframe['Rarity'] = huntsman_dataframe['Rarity'].fillna(huntsman_dataframe['Component'])# if component is not null replace Rarity with the value in the Component column
+huntsman_dataframe['Rarity'] = huntsman_dataframe['Rarity'].fillna('N.A.') # replacing the null in Rarity with N/A
+huntsman_dataframe['Item'] = huntsman_dataframe['Item'].fillna(huntsman_dataframe['Subcomponents']) # if the item column is null, replace it with the value in the Subcomponents column
+huntsman_dataframe.drop(columns=['Subcomponents'], inplace=True) # dropping the Subcomponents column
+huntsman_dataframe.drop(columns=['Component'], inplace=True) # dropping the Component column
 
 print('Writing to the database')
 with sqlite3.connect('gw2.db') as conn:
