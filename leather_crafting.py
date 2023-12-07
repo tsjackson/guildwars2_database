@@ -66,6 +66,7 @@ insignia_grandmaster = pd.read_html(url6, header=0)[3] # adding a dataframe for 
 # Grandmaster does not have runes
 # Grandmaster does not have refinement
 
+print("Merging all dataframes")
 leather_working = pd.concat([novice_dataframe, initiate_dataframe, apprentice_dataframe, journeyman_dataframe, adept_dataframe, master_dataframe, insignia_grandmaster], ignore_index=True) # merging all leatherworking dataframes into one
 
 # data cleaning
@@ -79,3 +80,5 @@ print('writing to database')
 with sqlite3.connect('gw2.db') as conn:
     leather_working.to_sql('leather_crafting', conn, if_exists='replace', index=False)
     conn.commit()
+
+print('Done')
