@@ -85,18 +85,23 @@ grandmaster_dataframe : pd.DataFrame = pd.concat([refinement_grandmaster, inscri
 # print(sigil_master)
 # print(nourishment_master)
 
+print("Merging all huntsman dataframes into one")
+huntsman_dataframe : pd.DataFrame = pd.concat([novice_dataframe, initiate_dataframe, apprentice_dataframe, journeyman_dataframe, adept_dataframe, master_dataframe, grandmaster_dataframe], ignore_index=True) # merging all huntsman dataframes into one
+
 # data cleaning
 print("Cleaning data")
-novice_dataframe['Item'] = novice_dataframe['Item'].fillna(novice_dataframe['Name']) # replacing null values in the item column with the value in the name column
-novice_dataframe.drop(columns=['Name'], inplace=True) # dropping the name column
-novice_dataframe.drop(columns=['Discipline'], inplace=True) # dropping the Discipline column
-novice_dataframe.drop(columns=['Trading Post'], inplace=True) # dropping the Trading Post column
-novice_dataframe['Attributes'] = novice_dataframe['Attributes'].fillna('N.A.') # replacing the null values in Attributes with N.A.
-novice_dataframe.drop(columns=['Discipline(s)'], inplace=True) # dropping the Output column
-novice_dataframe['Crafting Level'] = novice_dataframe['Crafting Level'].fillna(novice_dataframe['Rating']) # replacing null values in the Crafting Level column with the value in the name Rating
-novice_dataframe.drop(columns=['Rating'], inplace=True) # dropping the Rating column
+huntsman_dataframe['Item'] = huntsman_dataframe['Item'].fillna(huntsman_dataframe['Name']) # replacing null values in the item column with the value in the name column
+huntsman_dataframe.drop(columns=['Name'], inplace=True) # dropping the name column
+huntsman_dataframe.drop(columns=['Discipline'], inplace=True) # dropping the Discipline column
+huntsman_dataframe.drop(columns=['Trading Post'], inplace=True) # dropping the Trading Post column
+huntsman_dataframe['Attributes'] = huntsman_dataframe['Attributes'].fillna('N.A.') # replacing the null values in Attributes with N.A.
+huntsman_dataframe.drop(columns=['Discipline(s)'], inplace=True) # dropping the Output column
+huntsman_dataframe['Crafting Level'] = huntsman_dataframe['Crafting Level'].fillna(huntsman_dataframe['Rating']) # replacing null values in the Crafting Level column with the value in the name Rating
+huntsman_dataframe.drop(columns=['Rating'], inplace=True) # dropping the Rating column
 
 print('Writing to the database')
 with sqlite3.connect('gw2.db') as conn:
     novice_dataframe.to_sql('huntsman_crafting', conn, if_exists='replace', index=False)
     conn.commit()
+
+print('Done')
