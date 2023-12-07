@@ -101,7 +101,7 @@ huntsman_dataframe.drop(columns=['Rating'], inplace=True) # dropping the Rating 
 
 print('Writing to the database')
 with sqlite3.connect('gw2.db') as conn:
-    novice_dataframe.to_sql('huntsman_crafting', conn, if_exists='replace', index=False)
+    huntsman_dataframe.to_sql('huntsman_crafting', conn, if_exists='replace', index=False)
     conn.commit()
 
 print('Done')
